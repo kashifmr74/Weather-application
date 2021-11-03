@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Application</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    Enter City :<input type="text" id="cityName">
+
+    <button onclick="getWeather()">Check Weather</button>
+    <br>
+    <br>
+
+    <label for="result">Temperature in celcius :</label>
+    <p id="result"></p>
+
+    <label for="result01">Feels like :</label>
+    <p id="result01"></p>
+
+
+    <script>
+        function getWeather() {
+
+            const cityName = document.getElementById("cityName").value
+
+            axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=e7df6fa2d97b0e1ca1ff183c070dab63&units=metric`)
+  .then(function (response) {
+  
+    console.log(response);
+    console.log(response.data.main.temp);
+    console.log(response.data.main.feels_like);
+
+    document.getElementById("result").innerText = response.data.main.temp;
+
+    document.getElementById("result01").innerText = response.data.main.feels_like;
+  })
+
+
+
+
+
+        }
+
+
+
+
+
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!-- e7df6fa2d97b0e1ca1ff183c070dab63 -->
